@@ -1,30 +1,44 @@
-console.log("JS is loading!");
+console.log("app.js loaded!");
+
 const APP_ID = "f2e52d0df39a4bc1bf5f25f730843711";
-const TOKEN = "007eJxTYJjhmxJ6m+dF8tTa9duFNZR78qfdN1Tdaxi+NSf03dr66lAFhjSjVFOjFIOUNGPLRJOkZMOkNNM0I9M0c2MDCxNjc0NDjpTcjIZARob2GyyMjAwQCOJzMKSk5uYH5efnMjAAAIwMH6Q"; // Use null for testing
-const CHANNEL = "demoRoom";
+const TOKEN = "aca6065ede3c42a08307dced6d416acb";
+const CHANNEL = "DemoRoom";
 
 let client;
 let localTrack;
 
 document.getElementById("joinBtn").onclick = async () => {
-  client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
+  console.log("Join button clicked");
 
-  client.on("user-published", async (user, mediaType) => {
-    await client.subscribe(user, mediaType);
-    if (mediaType === "video") {
-      user.videoTrack.play("remote");
-    }
-    if (mediaType === "audio") {
-      user.audioTrack.play();
-    }
-  });
+  try {
+    client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
 
-  await client.join(APP_ID, CHANNEL, TOKEN, null);
+    client.on("user-published", async (user, mediaType) => {
+      console.log("User published:", user.uid, mediaType);
 
-  localTrack = await AgoraRTC.createCameraVideoTrack();
-  localTrack.play("local");
+      await client.subscribe(user, mediaType);
 
-  await client.publish([localTrack]);
+      if (mediaType === "video") {
+        user.videoTrack.play("remote");
+        console.log("Playing remote video");
+      }
+      if (mediaType === "audio") {
+        user.audioTrack.play();
+        console.log("Playing remote audio");
+      }
+    });
 
-  console.log("Joined Agora channel successfully!");
+    await client.join(APP_ID, CHANNEL, TOKEN, null);
+    console.log("Joined channel successfully");
+
+    localTrack = await AgoraRTC.createCameraVideoTrack();
+    localTrack.play("local");
+    console.log("Local video started");
+
+    await client.publish([localTrack]);
+    console.log("Published local track");
+  } catch (e) {
+    console.error("Error in Agora setup:", e);
+    alert("Error: " + e.message);
+  }
 };
