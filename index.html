@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Agora Video Call Demo</title>
+  <style>
+    video {
+      width: 300px;
+      height: 225px;
+      margin: 10px;
+      background: black;
+    }
+  </style>
+</head>
+<body>
+  <h2>Agora Video Call Demo</h2>
+  <video id="local" autoplay playsinline muted></video>
+  <video id="remote" autoplay playsinline></video>
+  <br />
+  <button id="joinBtn">Join Call</button>
+
+  <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
