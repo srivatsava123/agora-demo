@@ -2,24 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Agora Video Call Demo</title>
-  <style>
-    video {
-      width: 300px;
-      height: 225px;
-      margin: 10px;
-      background: black;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agora Demo</title>
+  <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.18.2.js"></script>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h2>Agora Video Call Demo</h2>
-  <video id="local" autoplay playsinline muted></video>
-  <video id="remote" autoplay playsinline></video>
-  <br />
+  <h2>Agora Demo</h2>
   <button id="joinBtn">Join Call</button>
+  <button id="leaveBtn">Leave Call</button>
 
-  <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
+  <div id="local" style="width: 320px; height: 240px; border: 1px solid black; margin: 10px;"></div>
+  <div id="remote" style="width: 320px; height: 240px; border: 1px solid black; margin: 10px;"></div>
+
   <script src="app.js"></script>
 </body>
 </html>
