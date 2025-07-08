@@ -1,7 +1,7 @@
 console.log("app.js loaded!");
 
 const APP_ID = "f2e52d0df39a4bc1bf5f25f730843711";
-const TOKEN = "aca6065ede3c42a08307dced6d416acb";
+const TOKEN = "007eJxTYGDbaf9l2VmX0spd+wtDpk1ltPe4MfG2Mdvut8V8k7+6qZgrMKQZpZoapRikpBlbJpokJRsmpZmmGZmmmRsbWJgYmxsaumfmZjQEMjLYdO5nYWSAQBCfg8ElNTc/KD8/l4EBALxuIDI";
 const CHANNEL = "DemoRoom";
 
 let client;
