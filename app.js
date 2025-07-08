@@ -1,3 +1,4 @@
+console.log("JS is loading!");
 const APP_ID = "f2e52d0df39a4bc1bf5f25f730843711";
 const TOKEN = null; // Use null for testing
 const CHANNEL = "demoRoom";
